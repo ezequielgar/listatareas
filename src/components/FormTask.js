@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
 // import Form from 'react-bootstrap/Form'
 // import Button from 'react-bootstrap/Button'
 // se puede importar de las dos maneras
@@ -7,8 +7,15 @@ import ListTask from "./ListTask";
 
 const FormTask = () => {
   // aqui va la logica
-  const [arrayTask, setArrayTask] = useState([]);
+  let taskLocalStorage = JSON.parse(localStorage.getItem('listTask')) || [];
+  const [arrayTask, setArrayTask] = useState(taskLocalStorage);
   const [task, setTasks] = useState("");
+
+  // ciclo de vida
+  useEffect(() =>{
+    // logica q se usa en el ciclo de vida
+    localStorage.setItem('listTask', JSON.stringify(arrayTask))
+  },[arrayTask])
 
   // funciones
   const handleSubmit = (e) => {
