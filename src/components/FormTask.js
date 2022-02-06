@@ -21,6 +21,12 @@ const FormTask = () => {
     setTasks("");
   };
 
+  // funcion borrar tarea
+  const deleteTask = (name) =>{
+    let arrayModif = arrayTask.filter((item)=>{return item !== name})
+    setArrayTask (arrayModif);
+  }
+
   return (
     <div>
       <Form onSubmit={handleSubmit}>
@@ -36,7 +42,7 @@ const FormTask = () => {
           </Button>
         </Form.Group>
       </Form>
-      <ListTask arrayTask={arrayTask}></ListTask>
+      <ListTask arrayTask={arrayTask} deleteTask={deleteTask}></ListTask>
     </div>
   );
 };

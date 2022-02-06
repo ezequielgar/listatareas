@@ -6,7 +6,7 @@ const ListTask = (props) => {
   return (
     <ListGroup>
       {
-        props.arrayTask.map((value,position)=> <ItemTask key={position} value={value}></ItemTask>)
+        props.arrayTask.map((value,position)=> <ItemTask key={position} value={value} deleteTask={props.deleteTask}></ItemTask>)
       }
         
     </ListGroup>
